@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Management Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header dashboard-header">
+    <div class="brand-mark">DER</div>
+    <div class="header-title">
+      <p class="eyebrow">MANAGEMENT AREA</p>
+      <h1>Damage reports</h1>
+    </div>
+    <button id="logout-button" class="button button-light hidden" type="button">Sign out</button>
+  </header>
+
+  <main class="dashboard-wrap">
+    <section id="login-panel" class="panel login-panel">
+      <p class="eyebrow">AUTHORIZED ACCESS ONLY</p>
+      <h2>Management sign in</h2>
+      <p>Sign in with the management account created in Supabase. Do not share these login details with engineers.</p>
+      <form id="login-form">
+        <label class="field">
+          <span>Management email</span>
+          <input id="login-email" type="email" autocomplete="username" required placeholder="manager@company.com">
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input id="login-password" type="password" autocomplete="current-password" required placeholder="Enter password">
+        </label>
+        <div id="login-message" class="message" role="status" aria-live="polite"></div>
+        <button id="login-button" class="button button-primary" type="submit">Sign in securely <span aria-hidden="true">→</span></button>
+      </form>
+    </section>
+
+    <section id="dashboard-panel" class="hidden">
+      <div class="dashboard-intro">
+        <div>
+          <p class="eyebrow">REPORT REGISTER</p>
+          <h2>All damaged items</h2>
+          <p>Review reports and record management acknowledgement.</p>
+        </div>
+        <button id="refresh-button" class="button button-light" type="button">↻ Refresh</button>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card"><span>Total reports</span><strong id="total-count">0</strong></article>
+        <article class="stat-card"><span>Awaiting acknowledgement</span><strong id="pending-count">0</strong></article>
+        <article class="stat-card"><span>Acknowledged</span><strong id="acknowledged-count">0</strong></article>
+      </div>
+
+      <div class="panel filters-panel">
+        <label class="field">
+          <span>Search reports</span>
+          <input id="search-input" type="search" placeholder="Search engineer, item, serial number or site">
+        </label>
+        <label class="field">
+          <span>Acknowledgement status</span>
+          <select id="status-filter">
+            <option value="all">All reports</option>
+            <option value="pending">Awaiting acknowledgement</option>
+            <option value="acknowledged">Acknowledged</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>From date</span>
+          <input id="date-from" type="date">
+        </label>
+        <label class="field">
+          <span>To date</span>
+          <input id="date-to" type="date">
+        </label>
+        <button id="clear-filters" class="button button-light" type="button">Clear filters</button>
+        <button id="export-button" class="button button-light" type="button">Export CSV ↓</button>
+      </div>
+
+      <div id="dashboard-message" class="message" role="status" aria-live="polite"></div>
+      <div id="report-list" class="report-list"></div>
+      <p class="page-footer">Keep this dashboard link private. Access is enforced by Supabase authentication and database policies.</p>
+    </section>
+  </main>
+  <script type="module" src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Submit a damaged equipment report.">
+  <title>Damaged Equipment Report</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-mark">DER</div>
+    <div>
+      <p class="eyebrow">OFFICE OPERATIONS</p>
+      <h1>Damaged Equipment Report</h1>
+    </div>
+  </header>
+
+  <main class="page-wrap">
+    <section class="intro">
+      <p class="eyebrow">ENGINEER SUBMISSION</p>
+      <h2>Report a damaged item</h2>
+      <p>Complete the details below and upload clear photos of the damaged item. Fields marked with * are required.</p>
+    </section>
+
+    <form id="report-form" class="panel" novalidate>
+      <div class="section-heading">
+        <span class="step-number">01</span>
+        <div><h3>Engineer and site details</h3><p>Tell us who is submitting this report and where the item is located.</p></div>
+      </div>
+
+      <div class="form-grid">
+        <label class="field">
+          <span>Engineer full name <b>*</b></span>
+          <input id="engineer-name" name="engineer_name" autocomplete="name" maxlength="120" required placeholder="e.g. Chinedu Okafor">
+        </label>
+        <label class="field">
+          <span>Site / location <b>*</b></span>
+          <input id="site" name="site" maxlength="160" required placeholder="e.g. Lekki site, Block B">
+        </label>
+        <label class="field">
+          <span>Date of report <b>*</b></span>
+          <input id="report-date" name="report_date" type="date" required>
+        </label>
+      </div>
+
+      <div class="section-heading section-spaced">
+        <span class="step-number">02</span>
+        <div><h3>Damaged item details</h3><p>Submit one damaged item per report. You can attach multiple photos of that item.</p></div>
+      </div>
+
+      <div class="form-grid">
+        <label class="field">
+          <span>Item name <b>*</b></span>
+          <input id="item-name" name="item_name" maxlength="160" required placeholder="e.g. Industrial water pump">
+        </label>
+        <label class="field">
+          <span>Quantity damaged <b>*</b></span>
+          <input id="quantity" name="quantity" type="number" min="1" max="100000" step="1" required placeholder="e.g. 1">
+        </label>
+        <label class="field">
+          <span>Serial number</span>
+          <input id="serial-number" name="serial_number" maxlength="160" placeholder="Enter serial number, if available">
+        </label>
+        <label class="field field-full">
+          <span>Description of damage <b>*</b></span>
+          <textarea id="description" name="description" rows="4" maxlength="3000" required placeholder="Describe the fault, visible damage, or what happened..."></textarea>
+        </label>
+
+
+        
+        <div class="field field-full">
+          <label for="images" class="field-label">Photos of damaged item <b>*</b></label>
+          <label class="upload-box" for="images">
+            <span class="upload-icon" aria-hidden="true">＋</span>
+            <strong>Choose photos or take a picture</strong>
+            <span>Image files of any size · Up to 5 photos</span>
+            <input type="file" id="images" accept="image/*" multiple>
+          </label>
+          <p id="file-list" class="file-list">No photos selected yet.</p>
+        </div>
+      </div>
+
+      <div id="form-message" class="message" role="status" aria-live="polite"></div>
+      <button id="submit-button" class="button button-primary" type="submit">
+        <span>Submit damage report</span><span aria-hidden="true">→</span>
+      </button>
+      <p class="privacy-note"><span aria-hidden="true">🔒</span> Submitted reports are stored for authorized management review.</p>
+    </form>
+    <p class="page-footer">Damaged Equipment Reporting System</p>
+  </main>
+  <script type="module" src="report.js"></script>
+</body>
+</html>
